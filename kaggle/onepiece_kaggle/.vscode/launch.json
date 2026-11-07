@@ -1,0 +1,48 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "01 - Prepare data",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/prepare_data.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "02 - Train ConvNeXt fold 0",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/train.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": ["--fold", "0", "--epochs", "22", "--batch-size", "16", "--workers", "2"]
+    },
+    {
+      "name": "03 - Train small CNN fold 0",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/train_small.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": ["--fold", "0", "--epochs", "90", "--batch-size", "64", "--workers", "2"]
+    },
+    {
+      "name": "04 - Predict ConvNeXt fold 0",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/predict.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": ["--checkpoints", "checkpoints/convnext_tiny_fb_in22k_ft_in1k_fold0.pt", "--batch-size", "16"]
+    },
+    {
+      "name": "05 - Inspect near duplicates",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/review_matches.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
