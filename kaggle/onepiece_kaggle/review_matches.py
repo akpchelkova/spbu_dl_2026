@@ -28,8 +28,8 @@ def thumbnail_datauri(path: Path) -> str:
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--data-dir', default='data')
-    p.add_argument('--output', default='outputs/review_duplicates.html')
+    p.add_argument('--data-dir', default=str(Path(__file__).resolve().parent / 'data'))
+    p.add_argument('--output', default=str(Path(__file__).resolve().parent / 'outputs' / 'review_duplicates.html'))
     args = p.parse_args()
     data = Path(args.data_dir)
     df = pd.read_csv(data / 'near_duplicate_candidates.csv')

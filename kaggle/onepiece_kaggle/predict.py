@@ -51,9 +51,9 @@ def exact_match_predictions(train_df, test_df, n_classes):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--data-dir', default='data')
+    p.add_argument('--data-dir', default=str(Path(__file__).resolve().parent / 'data'))
     p.add_argument('--checkpoints', required=True, nargs='+')
-    p.add_argument('--output', default='outputs/submission.csv')
+    p.add_argument('--output', default=str(Path(__file__).resolve().parent / 'outputs' / 'submission.csv'))
     p.add_argument('--batch-size', type=int, default=24)
     p.add_argument('--workers', type=int, default=4)
     p.add_argument('--tta', type=int, choices=(1, 2), default=2)
