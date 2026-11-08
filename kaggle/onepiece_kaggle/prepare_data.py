@@ -89,8 +89,9 @@ def union_find_groups(df: pd.DataFrame, threshold: int = 4) -> list[str]:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--raw-dir', default='raw')
-    parser.add_argument('--data-dir', default='data')
+    BASE_DIR = Path(__file__).resolve().parent
+    parser.add_argument('--raw-dir', default=str(BASE_DIR / 'raw'))
+    parser.add_argument('--data-dir', default=str(BASE_DIR / 'data'))
     parser.add_argument('--n-folds', type=int, default=5)
     parser.add_argument('--seed', type=int, default=42)
     args = parser.parse_args()
